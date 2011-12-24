@@ -1,0 +1,6 @@
+<div id="messages">
+<h2><?php echo $this->headline; ?></h2>
+<div id="messagesform">
+<?php echo $this->messages; ?>
+</div>
+</div>

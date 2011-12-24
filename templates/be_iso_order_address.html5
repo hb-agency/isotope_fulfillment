@@ -1,0 +1,28 @@
+<div id="address">
+<h2><?php echo $this->headline; ?></h2>
+
+<div id="addresstype" class="tl_submit_container">
+<span>
+<label id="labelcustomertype_0" for="customertype_0">Use existing customer</label>
+<input type="radio" name="customertype" id="customertype_0" class="radio" value="existing" checked="checked">
+</span>
+<span>
+<label id="labelcustomertype_1" for="customertype_1">Create new customer</label>
+<input type="radio" name="customertype" id="customertype_1" class="radio" value="new">
+</span>
+</div>
+
+<div id="lookup" style="display:block;">
+    <?php echo $this->lookup; ?>
+</div>
+<div id="addressfields">
+    <?php echo $this->addressfields; ?>
+</div>
+
+<div class="clear"></div>
+</div>
+
+<script>
+window.addEvent('domready', initialize);
+function initialize(){ IsotopeFulfillment.initialize(); }
+</script>

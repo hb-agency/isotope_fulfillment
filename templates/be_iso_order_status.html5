@@ -1,0 +1,10 @@
+<div id="iso_order_status" class="order_status">
+<h2><?php echo $this->headline; ?></h2>
+<p><?php echo $this->message; ?></p>
+<div class="select_container">
+<?php echo $this->status; ?>
+</div>
+<?php if (strlen($this->error)): ?>
+<p class="error"><?php echo $this->error; ?></p><?php endif; ?>
+
+</div>

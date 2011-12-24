@@ -1,0 +1,6 @@
+<fieldset id="pal_<?php echo $this->stepLabel; ?>_legend" class="tl_tbox block<?php if($this->stepClosed): ?> collapsed<?php endif; ?>">
+<legend onclick="AjaxRequest.toggleFieldset(this, '<?php echo $this->stepLabel; ?>_legend', 'tl_iso_orders')"><?php echo $this->stepLabel; ?></legend>
+	<div>
+		<?php echo $this->step; ?>
+	</div>	
+</fieldset>

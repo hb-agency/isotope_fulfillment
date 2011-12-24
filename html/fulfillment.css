@@ -1,0 +1,30 @@
+#billing_address, #shipping_address {
+	width:315px;
+	padding:10px;
+	border:1px solid #BBB;
+	margin:10px 0px;
+}
+
+#billing_address td, #shipping_address td { padding:1px 2px; }
+
+#lookup, #productselect {
+	padding:10px;
+	border:1px solid #BBB;
+	margin-top:10px;
+}
+#lookup h3 { padding-top:0px; }
+#addresstype label { color:#FFF; cursor:pointer; }
+#addresstype span { margin-right:10px; }
+#billing_address{ float:left;}
+#shipping_address{ float:right;}
+#addressfields span { display:block; } 
+
+.subtotal, .taxtotal, .shippingtotal, .grandtotal { margin-right:50px; padding:3px; border:0px 0px 1px 0px dotted #333; text-align: right; }
+.subtotal h3, .taxtotal h3, .shippingtotal h3, .grandtotal h3 { display: block; width:130px; text-align: left; float:left; margin:0 0 0 360px; padding:0;  }
+.grandtotal p {font-size: 18px; }
+input.iso_input {width:50px;}
+input.iso_input.readonly {background-color: gray; color:white;}
+p.error {margin:1px 0 0 0;padding:4px 2px 5px 22px;background:#faeeee url("../../../themes/images/error.gif") no-repeat 2px center;color:#c55;}
+
+.header_cancelCopy { padding: 2px 0px 3px 20px; background: url("../../../themes/default/images/delete.gif") no-repeat left center; }
+#tl_buttons .header_unlock { padding: 2px 0px 3px 20px; background: url("unlock.png") no-repeat left center; }

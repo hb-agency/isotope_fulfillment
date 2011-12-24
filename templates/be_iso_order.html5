@@ -1,0 +1,44 @@
+
+<div id="tl_buttons">
+
+<a href="<?php echo $this->cancelCopyHref; ?>" class="header_cancelCopy<?php echo $this->cancelCopyCssClass; ?>" title="<?php echo $this->cancelCopy; ?>" accesskey="c" onclick="Backend.getScrollOffset();"><?php echo $this->cancelCopy; ?></a>
+<span class="<?php echo $this->cancelCopyCssClass; ?>">&nbsp;&nbsp;::&nbsp;&nbsp;</span>
+
+<a href="contao/main.php?do=iso_orders" class="header_back" title="<?php echo $this->goBack; ?>" accesskey="b" onclick="Backend.getScrollOffset();"><?php echo $this->goBack; ?></a>
+
+</div>
+
+<h2 class="sub_headline"><?php echo $this->headline; ?></h2>
+
+<form action="<?php echo $this->request; ?>" id="tl_iso_fulfillment_neworder" class="tl_form" method="post">
+<div class="tl_formbody_edit">
+<input type="hidden" name="FORM_SUBMIT" value="<?php echo $this->formId; ?>">
+<input type="hidden" name="FORM_FIELDS[]" value="{details_legend},orderid">
+<input type="hidden" name="REQUEST_TOKEN" value="<?php echo REQUEST_TOKEN; ?>">
+
+<?php echo $this->fields; ?>
+
+<?php if($this->showTotals) : ?>
+<fieldset id="pal_Totals_legend" class="tl_tbox block">
+<legend onclick="AjaxRequest.toggleFieldset(this, 'Totals_legend', 'tl_iso_orders')">Totals</legend>
+	<div>
+		<h2>Totals</h2>
+		<div class="subtotal"><?php echo $this->subTotal; ?></div>
+		<div class="taxtotal"><?php echo $this->taxTotal; ?></div>
+		<div class="shippingtotal"><?php echo $this->shippingTotal; ?></div>
+		<div class="grandtotal"><?php echo $this->grandTotal; ?></div>
+		
+	</div>	
+</fieldset>
+<?php endif; ?>
+
+</div>
+
+<div class="tl_formbody_submit">
+
+<div class="tl_submit_container">
+<input type="submit" name="save" id="save" class="tl_submit<?php echo $this->submitCssClass; ?>" accesskey="s" value="<?php echo $this->submit; ?>">
+</div>
+
+</div>
+</form>

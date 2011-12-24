@@ -1,0 +1,6 @@
+<div id="products">
+<h2><?php echo $this->headline; ?></h2>
+<div id="productselect">
+<?php echo $this->products; ?>
+</div>
+</div>
