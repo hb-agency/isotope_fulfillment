@@ -190,10 +190,10 @@ class ModuleIsotopeOrderBackend extends BackendModule
 		$this->Template->fields = $this->buildSteps();
 						
 		//Collect Data and Write Order
-		if(!$this->doNotSubmit && $this->Input->post('FORM_SUBMIT') == $this->strFormId && !$this->isProcessSubmit() && !$this->blnReadOnly)
-		{			
+		if($this->Input->post('FORM_SUBMIT') == $this->strFormId && !$this->isProcessSubmit() && !$this->blnReadOnly)
+		{
 			$this->writeOrder();
-			$this->reload();
+			$this->reload();						
 		}
 		
 		$this->Isotope->Order->save();
@@ -748,7 +748,7 @@ class ModuleIsotopeOrderBackend extends BackendModule
 		foreach($arrProducts as $product)
 		{
 			$intProductId = $product['options'] ? $product['options'] : $product['product'];
-			
+
 			$objProductData = $this->Database->prepare("SELECT *, (SELECT class FROM tl_iso_producttypes WHERE tl_iso_products.type=tl_iso_producttypes.id) AS product_class FROM tl_iso_products WHERE id={$intProductId}")->limit(1)->execute();
 
 			$strClass = $GLOBALS['ISO_PRODUCT'][$objProductData->product_class]['class'];
@@ -760,6 +760,26 @@ class ModuleIsotopeOrderBackend extends BackendModule
 			catch (Exception $e)
 			{
 				$objProduct = new IsotopeProduct(array('id'=>$intProductId));
+			}
+			
+			//Set the options data on the product if it exists, and revert to parent
+			if($product['options'])
+			{
+				$arrVariantData = $objProduct->getData();
+				$arrVariantData['id'] = $product['product'];
+				$arrVariantData['pid'] = 0;
+				$arrOptionData = $objProduct->getOptions(true);
+				
+				try
+				{
+					$objProduct = new $strClass($arrVariantData);
+				}
+				catch (Exception $e)
+				{
+					$objProduct = new IsotopeProduct(array('id'=>$product['product']));
+				}
+				
+				$objProduct->setOptions($arrOptionData);
 			}
 						
 			//Product exists - update it

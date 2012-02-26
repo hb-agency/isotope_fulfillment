@@ -26,15 +26,15 @@
 
 var IsotopeFulfillment =
 {
-	toggleAddressFields: function(el, id)
+	toggleAddressFields: function(el, elid)
 	{
-		if (el.value==0 && $(id).getStyle('display')=='none')
+		if (el.value==0 && document.id(elid).getStyle('display')=='none')
 		{
-			$(id).setStyle('display', 'block');
+			document.id(elid).setStyle('display', 'block');
 		}
 		else
 		{
-			$(id).setStyle('display', 'none');
+			document.id(elid).setStyle('display', 'none');
 		}
 	},
 	
@@ -44,7 +44,7 @@ var IsotopeFulfillment =
 		var billingradios = $$('#billing_address input[type=radio]');
 		var shippingradios = $$('#shipping_address input[type=radio]');
 		var display = el.value=='existing' ? 'block' : 'none';
-		$('lookup').setStyle('display',display);
+		document.id('lookup').setStyle('display',display);
 		billingradios.each( function(radio) { if(radio.value>0) { radio.getParent('span').setStyle('display',display); radio.checked = false; }});
 		shippingradios.each( function(radio) { if(radio.value>0) { radio.getParent('span').setStyle('display',display); radio.checked = false; }});
 		if(billingradios[0]) { billingradios[0].checked = true; }
@@ -90,13 +90,14 @@ var IsotopeFulfillment =
 				var data = el.checked ? el.value : 0;
 				new Request.Contao(
 				{
+					field: el,
 					url: window.location.href,
 					data: 'isAjax=1&action=resetAddresses&data='+data+'&REQUEST_TOKEN='+REQUEST_TOKEN,
 					onRequest: AjaxRequest.displayBox('Loading data ...'),
 						
-					onSuccess: function(txt, xml)
+					onSuccess: function(txt)
 					{
-						$('addressfields').set('html', txt);
+						document.id('addressfields').set('html', txt);
 						window.fireEvent('domready');
 						AjaxRequest.hideBox();
 					}

@@ -34,7 +34,7 @@ $GLOBALS['TL_DCA']['tl_iso_orders']['list']['global_operations']['new_order'] = 
 	'label'               => &$GLOBALS['TL_LANG']['tl_iso_orders']['new'],
 	'href'                => 'key=new_order',
 	'class'               => 'header_new',
-	'attributes'          => 'onclick="Backend.getScrollOffset();" accesskey="e"',
+	'attributes'          => 'onclick="Backend.getScrollOffset();" accesskey="n"',
 );
 
 $GLOBALS['TL_DCA']['tl_iso_orders']['list']['global_operations']['all'] = array
